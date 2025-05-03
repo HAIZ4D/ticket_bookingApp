@@ -1,13 +1,13 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sse3401_lab3/base/utils/all_json.dart';
+import 'package:sse3401_lab3/base/utils/app_routes.dart';
 import 'package:sse3401_lab3/base/widgets/app_double_text.dart';
 import 'package:sse3401_lab3/base/widgets/ticket_view.dart';
 import 'package:sse3401_lab3/res/media.dart';
-
-
-
-import '../styles/app_styles.dart';
+import 'package:sse3401_lab3/screens/home/widgets/hotel.dart';
+import '../../styles/app_styles.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -27,6 +27,7 @@ class HomeScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -68,9 +69,30 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 40),
-                const AppDoubleText(bigText: 'Upcoming Flight', smallText: 'View all',),
-                SizedBox(height: 20),
-                TicketView()
+                AppDoubleText(bigText: 'Upcoming Flight', smallText: 'View all',
+                      func: ()=>Navigator.pushNamed(context,AppRoutes.allTicket),),
+                const SizedBox(height: 20),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: ticketList.take(2).map((singleTicket) => TicketView(ticket:singleTicket)
+                      ).toList(),
+                    ),
+                ),
+                const SizedBox(height: 40),
+                AppDoubleText(bigText: 'Hotels', smallText: 'View all',
+                      func: (){
+                        Navigator.pushNamed(context,AppRoutes.allHotels);
+                      }
+                ),
+                const SizedBox(height: 20),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: hotelList.take(2).map((singleHotel) => Hotel(hotel:singleHotel))
+                          .toList(),
+                    ),
+                )
               ],
             ),
           ),

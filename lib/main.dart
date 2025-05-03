@@ -1,31 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:sse3401_lab3/base/bottom_nav_bar.dart';
-import 'package:sse3401_lab3/screens/home_screen.dart';
+import 'package:sse3401_lab3/screens/home/all_hotels.dart';
+import 'package:sse3401_lab3/screens/home/home_screen.dart';
+import 'package:sse3401_lab3/screens/hotel_detail.dart';
+import 'package:sse3401_lab3/screens/ticket/ticket_screen.dart';
+
+import 'base/utils/app_routes.dart';
+import 'screens/home/all_tickets.dart';
 
 void main() {
-
-   runApp(const MyApp());
-   var test = TestClass(x: 4, y: 10);
-   print(test.x);
-   
-   var newTest = test.copyWith(x:30);
-   print(newTest.y);
-
-   var newTest2 = test.copyWith(y:100);
-   print(newTest2.y);
+  runApp(const MyApp());
 }
 
-class TestClass{
-  int x;
-  int y;
-
-  TestClass({required this.x, required this.y});
-  
-  TestClass copyWith({int? x, int? y}){
-    return TestClass(x:x??this.x, y:y??this.y);
-  }
-  
-}
 
  class MyApp extends StatelessWidget {
    const MyApp({super.key});
@@ -33,9 +19,16 @@ class TestClass{
    @override
    Widget build(BuildContext context) {
 
-     return const MaterialApp(
+     return MaterialApp(
        debugShowCheckedModeBanner: false,
-       home: BottomNavBar(),
+       routes: {
+         AppRoutes.homePage:(context)=> const BottomNavBar(),
+         AppRoutes.allTicket:(context)=>const AllTickets(),
+         AppRoutes.ticketScreen:(context)=> const TicketScreen(),
+         AppRoutes.allHotels:(context)=> const AllHotels(),
+         AppRoutes.hotelDetail:(context)=> const HotelDetail(),
+
+       },
      );
    }
  }
