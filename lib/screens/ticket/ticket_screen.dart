@@ -1,11 +1,11 @@
 import 'package:barcode_widget/barcode_widget.dart' show Barcode, BarcodeWidget;
 import 'package:flutter/material.dart';
-import 'package:sse3401_lab3/base/utils/all_json.dart';
-import 'package:sse3401_lab3/base/widgets/app_layoutbuilder_widget.dart';
-import 'package:sse3401_lab3/base/widgets/ticket_view.dart';
-import 'package:sse3401_lab3/screens/search/widgets/app_ticket_tabs.dart';
-import 'package:sse3401_lab3/screens/ticket/widgets/ticket_positioned_circles.dart';
-import 'package:sse3401_lab3/styles/app_styles.dart';
+import 'package:sse3401_lab4/base/utils/all_json.dart';
+import 'package:sse3401_lab4/base/widgets/app_layoutbuilder_widget.dart';
+import 'package:sse3401_lab4/base/widgets/ticket_view.dart';
+import 'package:sse3401_lab4/screens/search/widgets/app_ticket_tabs.dart';
+import 'package:sse3401_lab4/screens/ticket/widgets/ticket_positioned_circles.dart';
+import 'package:sse3401_lab4/styles/app_styles.dart';
 
 import '../../base/widgets/app_column_text_layout.dart' show AppColumnTextLayout;
 import '../../res/media.dart' show AppMedia;

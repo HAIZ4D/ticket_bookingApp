@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sse3401_lab3/base/widgets/app_column_text_layout.dart';
-import 'package:sse3401_lab3/base/widgets/app_layoutbuilder_widget.dart';
-import 'package:sse3401_lab3/base/widgets/big_circle.dart';
-import 'package:sse3401_lab3/base/widgets/big_dot.dart';
-import 'package:sse3401_lab3/base/widgets/text_style_fourth.dart';
-import 'package:sse3401_lab3/base/widgets/text_style_third.dart';
-import 'package:sse3401_lab3/styles/app_styles.dart';
+import 'package:sse3401_lab4/base/widgets/app_column_text_layout.dart';
+import 'package:sse3401_lab4/base/widgets/app_layoutbuilder_widget.dart';
+import 'package:sse3401_lab4/base/widgets/big_circle.dart';
+import 'package:sse3401_lab4/base/widgets/big_dot.dart';
+import 'package:sse3401_lab4/base/widgets/text_style_fourth.dart';
+import 'package:sse3401_lab4/base/widgets/text_style_third.dart';
+import 'package:sse3401_lab4/styles/app_styles.dart';
 
 class TicketView extends StatelessWidget {
   final Map<String, dynamic> ticket;

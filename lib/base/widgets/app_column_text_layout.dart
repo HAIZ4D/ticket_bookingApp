@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:sse3401_lab3/base/widgets/text_style_fourth.dart';
-import 'package:sse3401_lab3/base/widgets/text_style_third.dart';
+import 'package:sse3401_lab4/base/widgets/text_style_fourth.dart';
+import 'package:sse3401_lab4/base/widgets/text_style_third.dart';
 
 class AppColumnTextLayout extends StatelessWidget {
   final String topText;

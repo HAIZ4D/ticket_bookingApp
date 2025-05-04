@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sse3401_lab3/screens/home/all_tickets.dart';
-import 'package:sse3401_lab3/styles/app_styles.dart';
+import 'package:sse3401_lab4/screens/home/all_tickets.dart';
+import 'package:sse3401_lab4/styles/app_styles.dart';
 
 class AppDoubleText extends StatelessWidget {
   const AppDoubleText(

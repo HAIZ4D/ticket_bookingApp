@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sse3401_lab3/base/utils/app_routes.dart';
-import 'package:sse3401_lab3/screens/search/widgets/app_text_icon.dart';
-import 'package:sse3401_lab3/screens/search/widgets/app_ticket_tabs.dart';
-import 'package:sse3401_lab3/screens/search/widgets/find_tickets.dart';
-import 'package:sse3401_lab3/screens/search/widgets/ticket_promotion.dart';
-import 'package:sse3401_lab3/styles/app_styles.dart';
+import 'package:sse3401_lab4/base/utils/app_routes.dart';
+import 'package:sse3401_lab4/screens/search/widgets/app_text_icon.dart';
+import 'package:sse3401_lab4/screens/search/widgets/app_ticket_tabs.dart';
+import 'package:sse3401_lab4/screens/search/widgets/find_tickets.dart';
+import 'package:sse3401_lab4/screens/search/widgets/ticket_promotion.dart';
+import 'package:sse3401_lab4/styles/app_styles.dart';
 
 import '../../base/widgets/app_double_text.dart';
 import '../../res/media.dart';

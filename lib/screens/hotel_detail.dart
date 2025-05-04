@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sse3401_lab3/styles/app_styles.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sse3401_lab4/controller/text_expansion_controller.dart';
+import 'package:sse3401_lab4/provider/text_expansion_provider.dart';
+import 'package:sse3401_lab4/styles/app_styles.dart';
+import 'package:get/get.dart';
 import '../base/utils/all_json.dart';
 
 class HotelDetail extends StatefulWidget {
@@ -71,7 +74,7 @@ class _HotelDetailState extends State<HotelDetail> {
                                   Shadow(
                                     blurRadius: 10.0,
                                     color: AppStyles.primaryColor,
-                                    offset: Offset(2.0, 2.0)
+                                    offset: const Offset(2.0, 2.0)
                                   )
                                 ]
                             ),
@@ -84,15 +87,19 @@ class _HotelDetailState extends State<HotelDetail> {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              const Padding(
+               Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text(
+                child: ExpandedTextWidget(
+                  text: hotelList[index]["detail"]
+                )
+               ),
+                  /*Text(
                   "In this article, we will create a custom scrollable app bar with a background image in Flutter."
                   "The app bar will shrink as the user scrolls up, and it will include a back button. Below the image, we will display some descriptive"
                   "text with a More or Less button to show or hide additional text. Finally, we will add a section to display recent images"
                   "in a horizontal list.",
-                ),
-              ),
+                ),*/
+
               const Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Text(
@@ -100,17 +107,18 @@ class _HotelDetailState extends State<HotelDetail> {
                   style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 200.0,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                    itemCount: 10,
-                    itemBuilder: (context, index){
+                    itemCount: hotelList[index]["images"].length,
+                    itemBuilder: (context, imagesIndex) {
+                    print("${hotelList[index]["images"][0]}");
                   return Container(
                     margin: EdgeInsets.all(16),
                       color: Colors.red,
-                      child: Image.network(
-                          "https://via.placeholder.com/200x200"));
+                      child: Image.asset(
+                          "assets/images/${hotelList[index]["images"][imagesIndex]}"));
                 }),
               )
             ]),
@@ -120,3 +128,38 @@ class _HotelDetailState extends State<HotelDetail> {
     );
   }
 }
+
+class ExpandedTextWidget extends ConsumerWidget {
+  ExpandedTextWidget({super.key, required this.text});
+  final String text;
+
+
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    var provider = ref.watch(textExpansionProviderProvider);
+    var textWidget = Text(
+      text,
+      maxLines: provider?null:9,
+      overflow: provider?TextOverflow.visible:TextOverflow.ellipsis,
+    );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        textWidget,
+        GestureDetector(
+          onTap:(){
+            ref.watch(textExpansionProviderProvider.notifier).toggleText(provider);
+          },
+          child: Text(
+            provider?'Less':'More',
+            style: AppStyles.textStyle.copyWith(
+                color: AppStyles.primaryColor
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+

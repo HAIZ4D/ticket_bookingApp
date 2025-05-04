@@ -1,12 +1,13 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sse3401_lab3/base/utils/all_json.dart';
-import 'package:sse3401_lab3/base/utils/app_routes.dart';
-import 'package:sse3401_lab3/base/widgets/app_double_text.dart';
-import 'package:sse3401_lab3/base/widgets/ticket_view.dart';
-import 'package:sse3401_lab3/res/media.dart';
-import 'package:sse3401_lab3/screens/home/widgets/hotel.dart';
+import 'package:sse3401_lab4/base/utils/all_json.dart';
+import 'package:sse3401_lab4/base/utils/app_routes.dart';
+import 'package:sse3401_lab4/base/widgets/app_double_text.dart';
+import 'package:sse3401_lab4/base/widgets/ticket_view.dart';
+import 'package:sse3401_lab4/res/media.dart';
+import 'package:sse3401_lab4/screens/home/widgets/hotel.dart';
+import '../../base/widgets/heading_text.dart';
 import '../../styles/app_styles.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -37,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text("Good morning", style: AppStyles.headLineStyle3),
                         const SizedBox(height: 5),
-                        Text("Book Tickets", style: AppStyles.headLineStyle1),
+                        const HeadingText(text: "Book Tickets", isColor: false,),
                       ],
                     ),
                     Container(
@@ -75,7 +76,16 @@ class HomeScreen extends StatelessWidget {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: ticketList.take(2).map((singleTicket) => TicketView(ticket:singleTicket)
+                      children: ticketList.take(2).map((singleTicket) => GestureDetector(
+                          onTap: (){
+                            var index = ticketList.indexOf(singleTicket);
+
+                            print("I am tapped on the ticket $index");
+
+                            Navigator.pushNamed(context, AppRoutes.ticketScreen,
+                                arguments: {"index": index});
+                          },
+                          child: TicketView(ticket:singleTicket))
                       ).toList(),
                     ),
                 ),
@@ -89,7 +99,15 @@ class HomeScreen extends StatelessWidget {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: hotelList.take(2).map((singleHotel) => Hotel(hotel:singleHotel))
+                      children: hotelList.take(2).map((singleHotel) => GestureDetector(
+                          onTap: (){
+                            var index = hotelList.indexOf(singleHotel);
+
+                            Navigator.pushNamed(context, AppRoutes.hotelDetail, arguments: {
+                              "index":index
+                            });
+                          },
+                          child: Hotel(hotel:singleHotel)))
                           .toList(),
                     ),
                 )

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sse3401_lab3/base/utils/all_json.dart';
-import 'package:sse3401_lab3/base/utils/app_routes.dart';
-import 'package:sse3401_lab3/screens/home/widgets/hotel.dart';
-import 'package:sse3401_lab3/styles/app_styles.dart';
+import 'package:sse3401_lab4/base/utils/all_json.dart';
+import 'package:sse3401_lab4/base/utils/app_routes.dart';
+import 'package:sse3401_lab4/screens/home/widgets/hotel.dart';
+import 'package:sse3401_lab4/styles/app_styles.dart';
 
 class AllHotels extends StatelessWidget {
   const AllHotels({super.key});
